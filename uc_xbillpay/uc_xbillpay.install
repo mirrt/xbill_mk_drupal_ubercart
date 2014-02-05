@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install file for uc_zpayment.module.
+ * Install file for uc_xbillpay.module.
  */
 function uc_xbillpay_schema() {
   $schema['uc_payment_xbill'] = array(
