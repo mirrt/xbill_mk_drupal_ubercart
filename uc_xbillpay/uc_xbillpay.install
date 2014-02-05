@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Install file for uc_zpayment.module.
+ */
+function uc_xbillpay_schema() {
+  $schema['uc_payment_xbill'] = array(
+    'description' => t('Transaction table'),
+    'fields' => array(
+	  'order_id' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => 'Order ID',
+      ),
+      'amount' => array(
+        'type' => 'numeric',
+        'precision' => 6,
+        'scale' => 2,
+        'not null' => TRUE,
+        'default' => 0.00,
+      ),
+	  'payee' => array(
+        'type' => 'varchar',
+        'length' => 15,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'ZP account of payee',
+      ),
+      'payer' => array(
+        'type' => 'varchar',
+        'length' => 30,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'ZP account of payer',
+      ),
+      'description' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('order_id'),
+  );
+  return $schema;
+}
+function uc_zpayment_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'uc_xbillpay_%%'");
+}
+
