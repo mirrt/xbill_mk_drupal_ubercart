@@ -65,7 +65,7 @@ function uc_xbillpay_form_alter(&$form, &$form_state, $form_id) {
 function uc_xbillpay_uc_payment_method() {
   $path = base_path() . drupal_get_path('module', 'uc_xbillpay');
   
-  $title = variable_get('uc_xbillpay_method_title', t('X-bill'));
+  $title = variable_get('uc_xbillpay_method_title', t('Мобильный платеж'));
 
   $methods[] = array(
     'id' => 'xbillpay',
